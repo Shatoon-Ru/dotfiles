@@ -1,0 +1,38 @@
+#Keyboard layout
+setxkbmap -model pc105 -layout us,ru, -option grp:alt_shift_toggle
+
+#Compositor
+picom -b --config ~/.config/picom.conf
+#Walpapper
+nitrogen --restore
+
+# Set up an icon tray
+trayer --edge top --align right --SetDockType true --SetPartialStrut true \
+ --expand true --width 10 --transparent true --tint 0x5f5f5f --height 18 &
+
+# Fire up screensaver
+#xscreensaver -no-splash &
+
+# Power Management
+xfce4-power-manager &
+
+if [ -x /usr/bin/nm-applet ] ; then
+   nm-applet --sm-disable &
+fi
+
+redshift-gtk &
+
+# Polkit agent
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/polkit-kde-authentication-agent-1 & 
+#pulseaudio
+start-pulseaudio-x11 &
+
+# firewol
+/usr/bin/firewall-applet &
+
+# touchpad
+touchpad-indicator &
+
+#snapshots
+#/usr/bin/snapshot-detect &
